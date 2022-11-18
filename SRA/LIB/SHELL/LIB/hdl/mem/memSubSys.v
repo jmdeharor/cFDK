@@ -299,7 +299,30 @@ module MemorySubSystem # (
   //============================================================================
   //  INST: MEMORY CHANNEL #0
   //============================================================================
-  MemoryChannel_DualPort #(
+  assign siNTS_Mem_TxP_RdCmd_tready = 1'b0;
+  assign soNTS_Mem_TxP_RdSts_tvalid = 1'b0;
+  assign soNTS_Mem_TxP_RdSts_tdata = 8'd0;
+  assign soNTS_Mem_TxP_Read_tdata = 64'd0;
+  assign soNTS_Mem_TxP_Read_tkeep = 8'd0;
+  assign soNTS_Mem_TxP_Read_tlast = 1'b0;
+  assign soNTS_Mem_TxP_Read_tvalid = 1'b0;
+  assign siNTS_Mem_TxP_WrCmd_tready = 1'b0;
+  assign soNTS_Mem_TxP_WrSts_tvalid = 1'b0;
+  assign soNTS_Mem_TxP_WrSts_tdata = 8'd0;
+  assign siNTS_Mem_TxP_Write_tready = 1'b0;
+  assign siNTS_Mem_RxP_RdCmd_tready = 1'b0;
+  assign soNTS_Mem_RxP_RdSts_tvalid = 1'b0;
+  assign soNTS_Mem_RxP_RdSts_tdata = 8'd0;
+  assign soNTS_Mem_RxP_Read_tdata = 64'd0;
+  assign soNTS_Mem_RxP_Read_tkeep = 8'd0;
+  assign soNTS_Mem_RxP_Read_tlast = 1'b0;
+  assign soNTS_Mem_RxP_Read_tvalid = 1'b0;
+  assign siNTS_Mem_RxP_WrCmd_tready = 1'b0;
+  assign soNTS_Mem_RxP_WrSts_tvalid = 1'b0;
+  assign soNTS_Mem_RxP_WrSts_tdata = 8'd0;
+  assign siNTS_Mem_RxP_Write_tready = 1'b0;
+  assign poMMIO_Mc0_InitCalComplete = 1'b1;
+  /*MemoryChannel_DualPort #(
     gSecurityPriviledges,
     gBitstreamUsage,
     64,   // gUserDataChanWidth
@@ -393,7 +416,7 @@ module MemorySubSystem # (
     .poDDR4_Ck_n           (poDDR4_Mem_Mc0_Ck_n),
     .poDDR4_Ck_p           (poDDR4_Mem_Mc0_Ck_p),
     .poDDR4_Reset_n        (poDDR4_Mem_Mc0_Reset_n)
-  );  // End of MC0
+  );  // End of MC0*/
 
   //============================================================================
   //  INST: MEMORY CHANNEL #1
@@ -503,6 +526,6 @@ module MemorySubSystem # (
   //============================================================================
   //  COMB: CONTINUOUS OUTPUT PORT ASSIGNMENTS
   //============================================================================
-  assign poVoid = 0;
+  //assign poVoid = 0;
 
 endmodule

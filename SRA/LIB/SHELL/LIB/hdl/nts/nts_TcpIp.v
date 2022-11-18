@@ -523,9 +523,9 @@ module NetworkTransportStack_TcpIp (
   //-- TOE - DEBUG SIGNALS
   //--   Set 'keep' to "true' if you need/want to trace these signals
   //------------------------------------------------------------------ 
-  (* keep = "true" *) wire  [15: 0] sTOE_RxFreeSpace;
-  (* keep = "true" *) wire  [31: 0] sTOE_TcpIpRxByteCnt;
-  (* keep = "true" *) wire  [ 7: 0] sTOE_OooDebugState;
+  /*(* keep = "true" *)*/ wire  [15: 0] sTOE_RxFreeSpace;
+  /*(* keep = "true" *)*/ wire  [31: 0] sTOE_TcpIpRxByteCnt;
+  /*(* keep = "true" *)*/ wire  [ 7: 0] sTOE_OooDebugState;
   
   //-- End of signal declarations ----------------------------------------------
  
@@ -771,7 +771,75 @@ module NetworkTransportStack_TcpIp (
   //============================================================================
   //  INST: TCP-OFFLOAD-ENGINE
   //============================================================================
-  `ifdef USE_DEPRECATED_DIRECTIVES
+  assign poMMIO_Mc0RxWrErr = 1'b0;
+  assign ssTOE_ARS10_NotifDropCnt_tdata = 8'd0;
+  assign ssTOE_ARS10_NotifDropCnt_tvalid = 1'b0;
+  assign ssTOE_ARS11_MetaDropCnt_tdata = 0;
+  assign ssTOE_ARS11_MetaDropCnt_tvalid = 1'b0;
+  assign ssTOE_ARS12_DataDropCnt_tdata = 8'd0;
+  assign ssTOE_ARS12_DataDropCnt_tvalid = 1'b0;
+  assign poMMIO_TcpRxCrcDropCnt = 8'd0;
+  assign poMMIO_TcpRxSessDropCnt = 8'd0;
+  assign poMMIO_TcpRxOooDropCnt = 8'd0;
+  assign ssARS2_TOE_Data_tready = 1'b0;
+  assign ssTOE_ARS4_Data_tdata = 64'd0;
+  assign ssTOE_ARS4_Data_tkeep = 8'd0;
+  assign ssTOE_ARS4_Data_tlast = 1'b0;
+  assign ssTOE_ARS4_Data_tvalid = 1'b0;
+  assign soAPP_Tcp_Notif_tdata = 104'd0;
+  assign soAPP_Tcp_Notif_tvalid = 1'b0;
+  assign siAPP_Tcp_DReq_tready = 1'b0;
+  assign soAPP_Tcp_Data_tdata = 64'd0;
+  assign soAPP_Tcp_Data_tkeep = 8'd0;
+  assign soAPP_Tcp_Data_tlast = 1'b0;
+  assign soAPP_Tcp_Data_tvalid = 1'b0;
+  assign soAPP_Tcp_Meta_tdata = 8'd0;
+  assign soAPP_Tcp_Meta_tvalid = 1'b0;
+  assign siAPP_Tcp_LsnReq_tready = 1'b0;
+  assign soAPP_Tcp_LsnRep_tdata = 8'd0;
+  assign soAPP_Tcp_LsnRep_tvalid = 1'b0;
+  assign siAPP_Tcp_Data_tready = 1'b0;
+  assign siAPP_Tcp_SndReq_tready = 1'b0;
+  assign soAPP_Tcp_SndRep_tdata = 56'd0;
+  assign soAPP_Tcp_SndRep_tvalid = 1'b0;
+  assign siAPP_Tcp_OpnReq_tready = 1'b0;
+  assign soAPP_Tcp_OpnRep_tdata = 24'd0;
+  assign soAPP_Tcp_OpnRep_tvalid = 1'b0;
+  assign siAPP_Tcp_ClsReq_tready = 1'b0;
+  assign soMEM_RxP_RdCmd_tdata = 80'd0;
+  assign soMEM_RxP_RdCmd_tvalid = 1'b0;
+  assign siMEM_RxP_Data_tready = 1'b0;
+  assign siMEM_RxP_WrSts_tready = 1'b0;
+  assign soMEM_RxP_WrCmd_tdata = 80'd0;
+  assign soMEM_RxP_WrCmd_tvalid = 1'b0;
+  assign soMEM_RxP_Data_tdata = 64'd0;
+  assign soMEM_RxP_Data_tkeep = 8'd0;
+  assign soMEM_RxP_Data_tlast = 1'b0;
+  assign soMEM_RxP_Data_tvalid = 1'b0;
+  assign soMEM_TxP_RdCmd_tdata = 80'd0;
+  assign soMEM_TxP_RdCmd_tvalid = 1'b0;
+  assign siMEM_TxP_Data_tready = 1'b0;
+  assign siMEM_TxP_WrSts_tready = 1'b0;
+  assign soMEM_TxP_WrCmd_tdata = 80'd0;
+  assign soMEM_TxP_WrCmd_tvalid = 1'b0;
+  assign soMEM_TxP_Data_tdata = 64'd0;
+  assign soMEM_TxP_Data_tkeep = 8'd0;
+  assign soMEM_TxP_Data_tlast = 1'b0;
+  assign soMEM_TxP_Data_tvalid = 1'b0;
+  assign ssTOE_CAM_LkpReq_tdata = 104'd0;
+  assign ssTOE_CAM_LkpReq_tvalid = 1'b0;
+  assign ssCAM_TOE_LkpRep_tready = 1'b0;
+  assign ssCAM_TOE_LkpRep_tdata = 112'd0;
+  assign ssTOE_CAM_UpdReq_tvalid = 1'b0;
+  assign ssCAM_TOE_UpdRpl_tready = 1'b0;
+  assign ssTOE_CAM_UpdReq_tdata = 16'd0;
+  assign ssTOE_ARS13_SssRelCnt_tvalid = 1'b0;
+  assign ssTOE_ARS13_SssRelCnt_tdata = 16'd0;
+  assign ssTOE_ARS14_SssRegCnt_tvalid = 1'b0;
+  assign ssTOE_ARS14_SssRegCnt_tdata = 16'd0;
+  assign sTOE_RxFreeSpace = 32'd0;
+  assign sTOE_TcpIpRxByteCnt = 8'd0;
+  /*`ifdef USE_DEPRECATED_DIRECTIVES
   TcpOffloadEngine TOE (  
     .aclk                       (piShlClk),
     .aresetn                    (~piMMIO_Layer4Rst),
@@ -1226,7 +1294,7 @@ module NetworkTransportStack_TcpIp (
     .soDBG_OooDebug_V_V_TREADY(sHIGH_1b1)
     // NOT-USED .poSimCycCount_V ()
   );  // End of TOE 
-  `endif  // End of HLS_VERSION
+  `endif  // End of HLS_VERSION*/
   
   //============================================================================
   //  INST: AXI4-STREAM-REGISTER-SLICE (TOE ==>[ARS10]==> MMIO)
